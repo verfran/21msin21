@@ -39,7 +39,6 @@ class MonthContainer extends Component {
                             </Row>
                         </div>
                     )}
-
                 </Container>
             </div>
         );

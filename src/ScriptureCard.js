@@ -1,21 +1,20 @@
 import React from 'react';
-import { CardBody, CardTitle, Card } from 'reactstrap';
+import { CardBody, CardTitle, Card, CardText } from 'reactstrap';
 
 const bodyStyle = {
     color: 'black',
-    textAlign: 'center',
+    textAlign: 'left',
+    padding: "10px",
 }
 
 const ScriptureCard = (props) => {
 
     return (
         <div>
-            <Card style={{ padding: "10px" }}>
+            <Card>
                 <CardBody style={bodyStyle} >
-                    <CardTitle><h5>{props.scripture.id}</h5></CardTitle>
-                    {
-                        <div>{props.scripture.verse}</div>
-                    }
+                    <CardTitle><h4>{props.scripture.id}</h4></CardTitle>
+                    <CardText><big>{props.scripture.verse}</big></CardText>
                 </CardBody>
             </Card>
         </div>
