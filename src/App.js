@@ -1,11 +1,10 @@
 import './App.css';
+import MainContainer from './MainContainer'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        VFS test
-      </header>
+      <MainContainer />
     </div>
   );
 }
