@@ -3,7 +3,7 @@ import { Container, Row } from 'reactstrap';
 import TitleCard from './TitleCard'
 import MonthContainer from './MonthContainer'
 
-class MainContainer extends Component {
+class Home extends Component {
     render() {
 
         return (
@@ -22,4 +22,4 @@ class MainContainer extends Component {
 }
 
 
-export default MainContainer;
+export default Home;
