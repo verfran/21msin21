@@ -13,6 +13,9 @@ function App() {
         <Route exact={true} path="/update" render={() => (
           <Update />
         )} />
+        <Route exact={true} path="/preview" render={() => (
+          <Home showPreview="true"/>
+        )} />
       </Router>
     </div>
   );
