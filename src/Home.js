@@ -9,17 +9,16 @@ class Home extends Component {
         return (
             <div>
                 <Container fluid>
-                <Row xs={1}>
-                        <TitleCard/>
+                    <Row xs={1}>
+                        <TitleCard />
                     </Row>
                     <Row xs={1}>
-                        <MonthContainer/>
+                        <MonthContainer preview={this.props.showPreview}/>
                     </Row>
                 </Container>
             </div>
         );
     }
 }
-
 
 export default Home;
