@@ -1,5 +1,6 @@
 import React from 'react';
 import ScriptureCard from './ScriptureCard';
+import ApplicationCard from './ApplicationCard';
 
 const Month = (props) => {
 
@@ -12,6 +13,7 @@ const Month = (props) => {
                 )
             }
             <hr />
+            <ApplicationCard application={props.monthData.application}/>
         </div>
 
     );
