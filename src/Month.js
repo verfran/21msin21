@@ -13,7 +13,8 @@ const Month = (props) => {
                 )
             }
             <hr />
-            <ApplicationCard application={props.monthData.application}/>
+            <ApplicationCard application={props.monthData.application} />
+            <hr />
         </div>
 
     );
