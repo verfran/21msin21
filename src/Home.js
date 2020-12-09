@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Row } from 'reactstrap';
 import TitleCard from './TitleCard'
 import MonthContainer from './MonthContainer'
+import IntroCard from './IntroCard'
 
 class Home extends Component {
     render() {
@@ -13,7 +14,10 @@ class Home extends Component {
                         <TitleCard />
                     </Row>
                     <Row xs={1}>
-                        <MonthContainer preview={this.props.showPreview}/>
+                        <IntroCard />
+                    </Row>
+                    <Row xs={1}>
+                        <MonthContainer preview={this.props.showPreview} />
                     </Row>
                 </Container>
             </div>
