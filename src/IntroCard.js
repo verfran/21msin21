@@ -13,10 +13,9 @@ const IntroCard = (props) => {
         <div>
             <Card>
                 <CardBody style={bodyStyle} >
-                    <CardText><big>
+                    <CardText><big>Dear all
 <br />
                         <p>
-                            Dear all
                             As we approach the New Year, let us get into a habit of memorizing scriptures. Here is what we are planning to do together as a sector for the coming year. Every month we will have 2 scriptures to memorize.
 </p>
                         <p>
