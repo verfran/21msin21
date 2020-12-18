@@ -13,7 +13,7 @@ const IntroCard = (props) => {
         <div>
             <Card>
                 <CardBody style={bodyStyle} >
-                    <CardText><big>Dear all
+                    <CardText><big>
 <br />
                         <p>
                             Dear all
