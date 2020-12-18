@@ -16,7 +16,7 @@ const IntroCard = (props) => {
                     <CardText><big>Dear all
 <br />
                         <p>
-                            As we approach the New Year, let us get into a habit of memorizing scriptures. Here is what we are planning to do together as a region for the coming year. Every month we will have 2 scriptures to memorize.
+                            As we approach the New Year, let us get into a habit of memorizing scriptures. Here is what we are planning to do together as a region for the coming year. Every month we will have 3 scriptures to memorize.
 </p>
                         <p>
                             The Bible is a gift that offers us so much. However, like a box full of treasure, it does us no good unless we have the keys to unlock it. One of the keys to unlocking the Bible is Scripture memorization. Nothing will do more for your Christian life than developing the habit of memorizing Bible verses.
