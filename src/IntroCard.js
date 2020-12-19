@@ -69,7 +69,6 @@ const IntroCard = (props) => {
 </p>
 
                     </big></CardText>
-                    <hr />
                 </CardBody>
             </Card>
         </div>
