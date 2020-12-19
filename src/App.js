@@ -17,7 +17,7 @@ function App() {
         <Route exact={true} path="/preview" render={() => (
           <Home showPreview="true"/>
         )} />
-        <Route exact={true} path="/momoryscripturescore" render={() => (
+        <Route exact={true} path="/memoryscripturescore" render={() => (
           <Score />
         )} />
       </Router>
