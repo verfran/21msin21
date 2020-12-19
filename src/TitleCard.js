@@ -14,7 +14,6 @@ const TitleCard = (props) => {
             <Card>
                 <CardBody style={bodyStyle} >
                     <CardTitle><h3>30 Memory Scripture challenge</h3></CardTitle>
-                    <hr />
                 </CardBody>
             </Card>
         </div>

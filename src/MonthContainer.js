@@ -57,9 +57,7 @@ class MonthContainer extends Component {
                             </Row>
                         </div>
                     )}
-                    <hr />
                     <ApplicationCard />
-                    <hr />
                 </Container>
             </div>
         );

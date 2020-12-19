@@ -5,7 +5,11 @@ const Month = (props) => {
 
     return (
         <div>
-            <h3>{props.monthData.name}</h3>
+            <center>
+                <br />
+                <h3>{props.monthData.name}</h3>
+                <br />
+            </center>
             {
                 props.monthData.scriptures.map((scripture) =>
                     <ScriptureCard scripture={scripture} />
