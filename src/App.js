@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './Home';
 import Update from './Update';
+import Score from './Score';
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
         )} />
         <Route exact={true} path="/preview" render={() => (
           <Home showPreview="true"/>
+        )} />
+        <Route exact={true} path="/momoryscripturescore" render={() => (
+          <Score />
         )} />
       </Router>
     </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardBody, CardTitle, Card, CardText } from 'reactstrap';
+import { CardBody, Card, CardText } from 'reactstrap';
 
 const bodyStyle = {
     color: 'black',
