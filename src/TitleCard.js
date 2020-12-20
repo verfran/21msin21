@@ -4,7 +4,6 @@ import { CardBody, CardTitle, Card } from 'reactstrap';
 const bodyStyle = {
     color: 'black',
     textAlign: 'center',
-    whiteSpace: 'nowrap',
 }
 
 const TitleCard = (props) => {
@@ -13,7 +12,7 @@ const TitleCard = (props) => {
         <div>
             <Card>
                 <CardBody style={bodyStyle} >
-                    <CardTitle><h3>30 Memory Scripture challenge</h3></CardTitle>
+                    <CardTitle><h4>30 Memory Scripture challenge</h4></CardTitle>
                 </CardBody>
             </Card>
         </div>
