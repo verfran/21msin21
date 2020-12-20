@@ -7,8 +7,6 @@ const bodyStyle = {
     textAlign: 'center',
 }
 
-const textSize = { fontSize: '20px' }
-
 const Score = (props) => {
 
     return (
@@ -17,7 +15,10 @@ const Score = (props) => {
                 <big><b>JP Nagar</b></big>
             </Label>
             <hr/>
-            <br />
+            <Label>
+                <b>Romams 5:5</b>
+            </Label>
+            <hr/>
             <FormGroup check inline>
                 <Label check>
                     <big>Raju Namdev   </big><Input type="checkbox" />
