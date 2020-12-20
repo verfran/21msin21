@@ -12,7 +12,7 @@ const TitleCard = (props) => {
         <div>
             <Card>
                 <CardBody style={bodyStyle} >
-                    <CardTitle><h4>30 Memory Scripture challenge</h4></CardTitle>
+                    <CardTitle><h4>{props.title}</h4></CardTitle>
                 </CardBody>
             </Card>
         </div>

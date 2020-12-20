@@ -11,7 +11,7 @@ class Home extends Component {
             <div>
                 <Container fluid>
                     <Row xs={1}>
-                        <TitleCard />
+                        <TitleCard title="30 Memory Scripture challenge" />
                     </Row>
                     <Row xs={1}>
                         <IntroCard />
