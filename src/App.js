@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './Home';
 import Update from './Update';
-import Score from './Score';
+import ScoreGroup from './ScoreGroup';
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
           <Home showPreview="true"/>
         )} />
         <Route exact={true} path="/memoryscripturescore" render={() => (
-          <Score />
+          <ScoreGroup />
         )} />
       </Router>
     </div>

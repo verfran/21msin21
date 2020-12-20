@@ -7,16 +7,16 @@ const bodyStyle = {
     textAlign: 'center',
 }
 
-const Score = (props) => {
+const ScoreEditZone = (props) => {
 
     return (
         <Form style={bodyStyle}>
             <Label>
-                <big><b>JP Nagar</b></big>
+                <big><b>Romams 5:5</b></big>
             </Label>
             <hr/>
             <Label>
-                <b>Romams 5:5</b>
+                <b>JP Nagar (January)</b>
             </Label>
             <hr/>
             <FormGroup check inline>
@@ -60,4 +60,4 @@ const Score = (props) => {
     )
 }
 
-export default Score;
+export default ScoreEditZone;
