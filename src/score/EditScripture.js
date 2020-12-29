@@ -12,10 +12,11 @@ const linkStyle = {
     textAlign: 'center'
 }
 
-const bodyStyle = {
+const nameStyle = {
     color: 'black',
-    padding: "10px",
+    padding: "3px",
     textAlign: 'center',
+    fontSize: 18,
 }
 class EditScripture extends Component {
     constructor(props) {
@@ -73,7 +74,7 @@ class EditScripture extends Component {
         const renderCheckBox = (mem) => {
             if (mem.memorized === 'Y') {
                 return (
-                    <div>
+                    <div style={nameStyle}>
                         <FormGroup check inline>
                             <Label check>
                                 <big>{mem.name} </big><Input type="checkbox" id={mem.id} defaultChecked
@@ -85,7 +86,7 @@ class EditScripture extends Component {
             }
 
             return (
-                <div>
+                <div style={nameStyle}>
                     <FormGroup check inline>
                         <Label check>
                             <big>{mem.name} </big><Input type="checkbox" id={mem.id}
@@ -99,7 +100,7 @@ class EditScripture extends Component {
         return (
             <div>
                 <TitleCard title={this.state.scriptureName} />
-                <Form style={bodyStyle}>
+                <Form style={{padding: "20px"}}>
                     {this.state.members.map((mem) => renderCheckBox(mem))}
                 </Form>
 
