@@ -5,6 +5,7 @@ const bodyStyle = {
     color: 'black',
     textAlign: 'center',
     padding: "10px",
+    fontSize: 18,
 }
 
 const linkStyle = {
