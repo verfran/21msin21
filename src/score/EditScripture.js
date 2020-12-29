@@ -52,6 +52,8 @@ class EditScripture extends Component {
         this.state.members.forEach(mem => {
             this.updateMemberScripture(mem)
         })
+
+        this.props.onChildGroupClick(this.props.parentGroupInfo.id)
     }
 
     updateMemberScripture = (mem) => {
@@ -100,7 +102,7 @@ class EditScripture extends Component {
         return (
             <div>
                 <TitleCard title={this.state.scriptureName} />
-                <Form style={{padding: "20px"}}>
+                <Form style={{ padding: "20px" }}>
                     {this.state.members.map((mem) => renderCheckBox(mem))}
                 </Form>
 
