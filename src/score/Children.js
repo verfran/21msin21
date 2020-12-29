@@ -5,7 +5,7 @@ const textStyle = {
     color: 'blue',
     cursor: 'pointer',
     textDecoration: 'underline',
-    fontSize: 14,
+    fontSize: 16,
     paddingBottom: 14,
     textAlign: 'left'
 }
