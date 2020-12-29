@@ -7,8 +7,8 @@ const linkStyle = {
     color: 'blue',
     cursor: 'pointer',
     textDecoration: 'underline',
-    fontSize: 14,
-    paddingBottom: 14,
+    fontSize: 18,
+    paddingBottom: 18,
     textAlign: 'center'
 }
 
