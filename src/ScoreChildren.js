@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, CardBody, Card, CardText } from 'reactstrap';
+import { NavLink, CardBody, Card } from 'reactstrap';
 
 const bodyStyle = {
     color: 'black',
