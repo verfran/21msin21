@@ -30,7 +30,7 @@ class ScoreMain extends Component {
     fetchData() {
         this.setState({ renderType: RenderType.LOADING });
 
-        fetch('http://127.0.0.1:8000/api/msscore/' + this.state.groupID + '/')
+        fetch('https://ms21-backend.herokuapp.com/api/msscore/' + this.state.groupID + '/')
             .then(res => res.json())
             .then(json => {
                 this.setState({
