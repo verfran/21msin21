@@ -25,9 +25,21 @@ class MonthContainer extends Component {
             jan: {
                 "name": "January",
                 "scriptures": [
-                    { "id": "2 Corinthians 5:14, 15", "verse": "For Christ’s love compels us, because we are convinced that one died for all, and therefore all died. 15 And he died for all, that those who live should no longer live for themselves but for him who died for them and was raised again." },
-                    { "id": "John 13:34, 35", "verse": "A new command I give you: Love one another. As I have loved you, so you must love one another. 35 By this everyone will know that you are my disciples, if you love one another." },
-                    { "id": "Colossians 3:12-14", "verse": "Therefore, as God’s chosen people, holy and dearly loved, clothe yourselves with compassion, kindness, humility, gentleness and patience. 13 Bear with each other and forgive one another if any of you has a grievance against someone. Forgive as the Lord forgave you. 14 And over all these virtues put on love, which binds them all together in perfect unity." },
+                    {
+                        "id": "2 Corinthians 5:14, 15",
+                        "verse": "For Christ’s love compels us, because we are convinced that one died for all, and therefore all died. 15 And he died for all, that those who live should no longer live for themselves but for him who died for them and was raised again.",
+                        "videoID": "Wh61mgP1KaQ",
+                    },
+                    {
+                        "id": "John 13:34, 35",
+                        "verse": "A new command I give you: Love one another. As I have loved you, so you must love one another. 35 By this everyone will know that you are my disciples, if you love one another.",
+                        "videoID": "tcBa6ciJfk8",
+                    },
+                    {
+                        "id": "Colossians 3:12-14",
+                        "verse": "Therefore, as God’s chosen people, holy and dearly loved, clothe yourselves with compassion, kindness, humility, gentleness and patience. 13 Bear with each other and forgive one another if any of you has a grievance against someone. Forgive as the Lord forgave you. 14 And over all these virtues put on love, which binds them all together in perfect unity.",
+                        "videoID": "f466fjh6y9A",
+                    },
                 ],
                 "application": {
                     "notes": "God is always faithful to us and the scriptures encourage us to be faithful as well. During the coming weeks see how you can apply the following in your life.",
