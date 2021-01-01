@@ -8,13 +8,13 @@ const YouTubeCard = (props) => {
     }
     const opts = {
         height: '200',
-        width: '300',
+        width: '270',
         playerVars: {
         },
     };
 
     return (
-        <div style={{ padding: "20px" }}>
+        <div style={{ padding: "10px" }}>
             <center>
                 <YouTube videoId={props.videoID} opts={opts} onReady={onVideoReady} />
             </center>
