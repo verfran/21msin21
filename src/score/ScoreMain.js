@@ -3,6 +3,7 @@ import { Container, Row } from 'reactstrap';
 import Group from './Group.js';
 import FamilyGroup from './FamilyGroup.js';
 import EditScripture from './EditScripture.js';
+import Login from './Login.js';
 
 var RenderType = {
     LOADING: 1,
@@ -15,11 +16,12 @@ class ScoreMain extends Component {
     constructor() {
         super();
         this.state = {
-            loggedIn: true,
+            loggedIn: false,
             groupID: 2,
             fgStats: {},
             scripture: {},
             renderType: RenderType.LOADING,
+            token: '',
         }
     }
 
@@ -28,9 +30,16 @@ class ScoreMain extends Component {
     }
 
     fetchData() {
+        if (this.state.loggedIn === false) {
+            return;
+        }
+
         this.setState({ renderType: RenderType.LOADING });
 
-        fetch('https://ms21-backend.herokuapp.com/api/msscore/' + this.state.groupID + '/')
+        const requestOptions = {
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Token ' + this.state.token },
+        };
+        fetch('https://ms21-backend.herokuapp.com/api/msscore/' + this.state.groupID + '/', requestOptions)
             .then(res => res.json())
             .then(json => {
                 this.setState({
@@ -55,7 +64,19 @@ class ScoreMain extends Component {
         this.setState({ scripture: scrptr, renderType: RenderType.EDIT_SCRIPTURE })
     }
 
+    setToken = (tok) =>{
+        this.setState({token:tok, loggedIn: true})
+        this.fetchData()
+    }
+
     render() {
+
+        if (this.state.loggedIn === false) {
+            return (
+                <div>
+                    <Login setToken={this.setToken}/>
+                </div>)
+        }
 
         if (this.state.renderType === RenderType.LOADING) {
             return (<div>Loading ...</div>)
