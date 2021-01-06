@@ -15,7 +15,6 @@ class Update extends Component {
     }
 
     onChooseFile = (event) => {
-        console.log(event.target.files[0])
         this.setState(
             {
                 fileName: event.target.files[0].name,
@@ -29,12 +28,16 @@ class Update extends Component {
             alert("choose a file upload")
         }
 
+        const formData = new FormData()
+
+        formData.append("submitedFile", this.state.selectedFile)
+
+        console.log(formData)
         const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: this.state.selectedFile,
+            method: 'PUT',
+            body: formData,
         };
-        fetch(`https://ms21-backend.herokuapp.com/api/msfileupload/273/`, requestOptions)
+        fetch('https://ms21-backend.herokuapp.com/api/msfileupload/270/', requestOptions)
             .then(response => response.json())
     }
 
