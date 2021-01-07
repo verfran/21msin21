@@ -63,7 +63,7 @@ class MonthContainer extends Component {
             <div>
                 <Container fluid>
                     {monthItems.map((month) =>
-                        <div>
+                        <div key={month.name}>
                             <Row xs={1}>
                                 <Month monthData={month} />
                             </Row>

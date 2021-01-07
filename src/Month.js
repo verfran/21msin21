@@ -12,7 +12,7 @@ const Month = (props) => {
             </center>
             {
                 props.monthData.scriptures.map((scripture) =>
-                    <ScriptureCard scripture={scripture} />
+                    <ScriptureCard key={scripture.id} scripture={scripture} />
                 )
             }
         </div>
