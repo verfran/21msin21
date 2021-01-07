@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Container, Row } from 'reactstrap';
 import TitleCard from './TitleCard'
 import MonthContainer from './MonthContainer'
-import IntroCard from './IntroCard'
 
 class Home extends Component {
     render() {
@@ -12,9 +11,6 @@ class Home extends Component {
                 <Container fluid>
                     <Row xs={1}>
                         <TitleCard title="30 Memory Scripture challenge" />
-                    </Row>
-                    <Row xs={1}>
-                        <IntroCard />
                     </Row>
                     <Row xs={1}>
                         <MonthContainer preview={this.props.showPreview} />
