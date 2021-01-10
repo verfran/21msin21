@@ -30,7 +30,7 @@ const Month = (props) => {
                     <CardText><big>{props.month.name}</big></CardText>
                     {
                         props.month.scriptures.map((scripture) =>
-                            <CardText>{scripture.name} <br />
+                            <CardText key={scripture.id}>{scripture.name} <br />
                                 <div style={editStyle} onClick={() => onEditScripture(scripture)}>
                                     {scripture.menCount + scripture.womenCount} memorized
                                 </div>

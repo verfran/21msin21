@@ -7,7 +7,7 @@ const Months = (props) => {
         <div>
             {
                 props.months.map((month) =>
-                    <Month month={month} edit={props.edit} onScriptureClick={props.onScriptureClick}/>
+                    <Month key={month.name} month={month} edit={props.edit} onScriptureClick={props.onScriptureClick}/>
                 )
             }
         </div>
