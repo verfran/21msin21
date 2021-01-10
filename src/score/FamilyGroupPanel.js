@@ -38,15 +38,14 @@ const FamilyGroupPanel = (props) => {
         staleTime: 30 * 1000,
     })
 
-
     return (
         <div>
             {status === 'loading' && (
-                <div>Loading data ...</div>
+                <div>Loading members ...</div>
             )}
 
             {status === 'error' && (
-                <div>Error fetching data</div>
+                <div>Error fetching member data</div>
             )}
 
             {status === 'success' && (
@@ -64,11 +63,11 @@ const FamilyGroupPanel = (props) => {
                         }
                         
                         {pgstatus === 'loading' && (
-                            <div>Loading data ...</div>
+                            <div>Loading parent group ...</div>
                         )}
 
                         {pgstatus === 'error' && (
-                            <div>Error fetching data</div>
+                            <div>Error fetching parent group</div>
                         )}
                         {pgstatus === 'success' && (
                             <>

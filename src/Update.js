@@ -41,6 +41,25 @@ class Update extends Component {
             .then(response => response.json())
     }
 
+    onUploadNew = (event) => {
+        if (this.state.fileName === "") {
+            alert("choose a file upload")
+        }
+
+        const formData = new FormData()
+
+        formData.append("name", this.state.selectedFile)
+        formData.append("member", 40)
+
+        console.log(formData)
+        const requestOptions = {
+            method: 'POST',
+            body: formData,
+        };
+        fetch('http://127.0.0.1:8000/api/fileupload/', requestOptions)
+            .then(response => response.json())
+    }
+
     render() {
         return (
             <div style={formStyle}>
@@ -51,7 +70,7 @@ class Update extends Component {
                 </FormText>
                 </FormGroup>
                 <div style={{ padding: "15px" }}>
-                    <Button color="info" size="lg" block onClick={this.onUpload}>Upload</Button>
+                    <Button color="info" size="lg" block onClick={this.onUploadNew}>Upload</Button>
                 </div>
             </div>
         );
