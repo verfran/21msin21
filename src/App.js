@@ -4,7 +4,7 @@ import Update from './Update';
 import ScoreMain from './score/ScoreMain';
 import FileUploadMain from './score/FileUploadMain';
 import { QueryClient, QueryClientProvider } from 'react-query'
-import { ReactQueryDevtools } from 'react-query/devtools'
+//import { ReactQueryDevtools } from 'react-query/devtools'
 
 const queryClient = new QueryClient()
 
@@ -31,7 +31,7 @@ function App() {
             )} />
           </Router>
         </div>
-        <ReactQueryDevtools initialIsOpen={false} />
+        {/*<ReactQueryDevtools initialIsOpen={false} />*/}
       </QueryClientProvider>
     </>
   );
