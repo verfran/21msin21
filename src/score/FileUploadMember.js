@@ -57,6 +57,8 @@ class FileUploadMember extends Component {
                     selectedFile: null,
                 }
             ))
+
+        this.props.onGroupClick(this.props.familyGroup)
     }
 
     render() {
