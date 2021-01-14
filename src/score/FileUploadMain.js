@@ -20,7 +20,11 @@ class FileUploadMain extends Component {
     }
 
     onGroupClick = (grp) => {
-        this.setState({ group: grp, groupID: grp.id })
+        this.setState({
+            group: grp,
+            groupID: grp.id,
+            renderType: RenderType.FAMILY_GROUP
+        })
     }
 
     onMemberClick = (member) => {
@@ -28,14 +32,16 @@ class FileUploadMain extends Component {
     }
 
     render() {
-        if(this.state.renderType === RenderType.MEMBER){
-            return(<FileUploadMember member={this.state.member}/>)
+        if (this.state.renderType === RenderType.MEMBER) {
+            return (<FileUploadMember member={this.state.member}
+                onGroupClick={this.onGroupClick}
+                familyGroup={this.state.group} />)
         }
 
         if (this.state.group != null && this.state.group.type === "Family Group") {
             return (<FamilyGroupPanel familyGroupID={this.state.groupID}
                 onMemberClick={this.onMemberClick}
-                onGroupClick={this.onGroupClick}/>)
+                onGroupClick={this.onGroupClick} />)
         }
 
         return (<GroupPanel group={this.state.groupID} onGroupClick={this.onGroupClick} />);
