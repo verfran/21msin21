@@ -32,7 +32,6 @@ class Update extends Component {
 
         formData.append("submitedFile", this.state.selectedFile)
 
-        console.log(formData)
         const requestOptions = {
             method: 'PUT',
             body: formData,
@@ -51,7 +50,6 @@ class Update extends Component {
         formData.append("name", this.state.selectedFile)
         formData.append("member", 40)
 
-        console.log(formData)
         const requestOptions = {
             method: 'POST',
             body: formData,

@@ -7,6 +7,16 @@ const formStyle = {
     padding: "30px",
 }
 
+const clickableTextStyle = {
+    color: 'blue',
+    cursor: 'pointer',
+    textDecoration: 'underline',
+    fontSize: 18,
+    paddingBottom: 18,
+    paddingLeft: 50,
+    textAlign: 'left'
+}
+
 class FileUploadMember extends Component {
     constructor() {
         super();
@@ -66,6 +76,13 @@ class FileUploadMember extends Component {
                     <div style={{ padding: "15px" }}>
                         <Button color="info" size="lg" block onClick={this.onUpload}>Upload</Button>
                     </div>
+                    <>
+                        <hr />
+                        <Row xs={1}>
+                            <div style={clickableTextStyle} onClick={() => this.props.onGroupClick(this.props.familyGroup)}> <li>{this.props.familyGroup.name}</li></div>
+                        </Row>
+                    </>
+
                 </Container>
             </div>
         );
