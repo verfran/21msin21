@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { FormGroup, FormText, Button, Input } from 'reactstrap';
 import { Container, Row } from 'reactstrap';
 import TitleCard from '../TitleCard.js';
+import UploadedFiles from './UploadedFiles.js';
 
 const formStyle = {
     padding: "30px",
@@ -37,7 +38,8 @@ class FileUploadMember extends Component {
 
     onUpload = (event) => {
         if (this.state.fileName === "") {
-            alert("choose a file upload")
+            alert("choose a file to upload")
+            return
         }
 
         const formData = new FormData()
@@ -67,6 +69,9 @@ class FileUploadMember extends Component {
                 <Container fluid>
                     <Row xs={1}>
                         <TitleCard title={"Upload file for " + this.props.member.name} />
+                    </Row>
+                    <Row xs={1}>
+                        <UploadedFiles memberid={this.props.member.id} />
                     </Row>
                     <br />
                     <FormGroup row>
