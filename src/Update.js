@@ -30,23 +30,6 @@ class Update extends Component {
 
         const formData = new FormData()
 
-        formData.append("submitedFile", this.state.selectedFile)
-
-        const requestOptions = {
-            method: 'PUT',
-            body: formData,
-        };
-        fetch('https://ms21-backend.herokuapp.com/api/msfileupload/270/', requestOptions)
-            .then(response => response.json())
-    }
-
-    onUploadNew = (event) => {
-        if (this.state.fileName === "") {
-            alert("choose a file upload")
-        }
-
-        const formData = new FormData()
-
         formData.append("name", this.state.selectedFile)
         formData.append("member", 40)
 
@@ -68,7 +51,7 @@ class Update extends Component {
                 </FormText>
                 </FormGroup>
                 <div style={{ padding: "15px" }}>
-                    <Button color="info" size="lg" block onClick={this.onUploadNew}>Upload</Button>
+                    <Button color="info" size="lg" block onClick={this.onUpload}>Upload</Button>
                 </div>
             </div>
         );

@@ -38,7 +38,9 @@ class GroupMain extends Component {
                 familyGroup={this.state.group} />)
         }
 
-        return(<Correction memberid={13} />)
+        return (<Correction member={this.state.member}
+            onGroupClick={this.onGroupClick}
+            familyGroup={this.state.group} />)
     }
 
     render() {
