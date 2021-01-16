@@ -62,7 +62,7 @@ class EditScripture extends Component {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ "memorized": mem.memorized })
         };
-        fetch(`https://ms21-backend.herokuapp.com/api/memberscripture/${mem.msid}/`, requestOptions)
+        fetch(`https://ms21-backend.herokuapp.com/api/updatememberscripture/${mem.msid}/`, requestOptions)
             .then(response => response.json())
     }
 

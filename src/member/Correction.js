@@ -1,10 +1,21 @@
 import { React } from 'react';
 import { useQuery } from 'react-query';
+import { Container, Row } from 'reactstrap';
+import TitleCard from '../TitleCard.js';
 
 const linkStyle = {
     textAlign: 'center',
     padding: "5px",
     fontSize: 18,
+}
+const clickableTextStyle = {
+    color: 'blue',
+    cursor: 'pointer',
+    textDecoration: 'underline',
+    fontSize: 18,
+    paddingBottom: 18,
+    paddingLeft: 50,
+    textAlign: 'left'
 }
 
 const fetch_urls = async (arg) => {
@@ -15,7 +26,7 @@ const fetch_urls = async (arg) => {
 
 const Correction = (props) => {
 
-    const { status, data } = useQuery(['urls', props.memberid], fetch_urls, {
+    const { status, data } = useQuery(['urls', props.member.id], fetch_urls, {
         staleTime: 1 * 1000,
     })
 
@@ -31,7 +42,10 @@ const Correction = (props) => {
             )}
 
             {status === 'success' && (
-                <div>
+                <Container fluid>
+                    <Row xs={1}>
+                        <TitleCard title={"Correction for " + props.member.name} />
+                    </Row>
                     {
                         data.urls.map((url) =>
                             <div style={linkStyle}>
@@ -40,8 +54,13 @@ const Correction = (props) => {
                             </div>
                         )
                     }
-                    <hr />
-                </div>
+                    <>
+                        <hr />
+                        <Row xs={1}>
+                            <div style={clickableTextStyle} onClick={() => props.onGroupClick(props.familyGroup)}> <li>{props.familyGroup.name}</li></div>
+                        </Row>
+                    </>
+                </Container>
             )}
         </div>
     );
