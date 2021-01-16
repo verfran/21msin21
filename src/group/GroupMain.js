@@ -1,15 +1,15 @@
 import { React, Component } from 'react';
 import GroupPanel from './GroupPanel';
 import FamilyGroupPanel from './FamilyGroupPanel';
-import FileUploadMember from './FileUploadMember';
+import FileUploadMember from '../member/FileUploadMember';
+import Correction from '../member/Correction';
 
 var RenderType = {
     GROUP: 1,
-    FAMILY_GROUP: 2,
-    MEMBER: 3,
+    MEMBER: 2,
 }
 
-class FileUploadMain extends Component {
+class GroupMain extends Component {
     constructor() {
         super();
         this.state = {
@@ -23,7 +23,7 @@ class FileUploadMain extends Component {
         this.setState({
             group: grp,
             groupID: grp.id,
-            renderType: RenderType.FAMILY_GROUP
+            renderType: RenderType.GROUP
         })
     }
 
@@ -31,11 +31,19 @@ class FileUploadMain extends Component {
         this.setState({ member: member, renderType: RenderType.MEMBER })
     }
 
-    render() {
-        if (this.state.renderType === RenderType.MEMBER) {
+    renderAction = () => {
+        if (this.props.action === "FileUpload") {
             return (<FileUploadMember member={this.state.member}
                 onGroupClick={this.onGroupClick}
                 familyGroup={this.state.group} />)
+        }
+
+        return(<Correction memberid={13} />)
+    }
+
+    render() {
+        if (this.state.renderType === RenderType.MEMBER) {
+            return this.renderAction()
         }
 
         if (this.state.group != null && this.state.group.type === "Family Group") {
@@ -48,4 +56,4 @@ class FileUploadMain extends Component {
     }
 }
 
-export default FileUploadMain;
+export default GroupMain;

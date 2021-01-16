@@ -2,8 +2,10 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './Home';
 import Update from './Update';
 import ScoreMain from './score/ScoreMain';
-import FileUploadMain from './score/FileUploadMain';
 import { QueryClient, QueryClientProvider } from 'react-query'
+import Correction from './Correction';
+import FileUpload from './FileUpload';
+
 //import { ReactQueryDevtools } from 'react-query/devtools'
 
 const queryClient = new QueryClient()
@@ -27,7 +29,10 @@ function App() {
               <ScoreMain />
             )} />
             <Route exact={true} path="/MSFileUpload" render={() => (
-              <FileUploadMain />
+              <FileUpload />
+            )} />
+            <Route exact={true} path="/MSCorrection" render={() => (
+              <Correction />
             )} />
           </Router>
         </div>
