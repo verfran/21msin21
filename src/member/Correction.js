@@ -2,6 +2,7 @@ import { React } from 'react';
 import { useQuery } from 'react-query';
 import { Container, Row } from 'reactstrap';
 import TitleCard from '../TitleCard.js';
+import MemberScripture from './MemberScripture';
 
 const linkStyle = {
     textAlign: 'center',
@@ -27,7 +28,7 @@ const fetch_urls = async (arg) => {
 const Correction = (props) => {
 
     const { status, data } = useQuery(['urls', props.member.id], fetch_urls, {
-        staleTime: 1 * 1000,
+        staleTime: 30 * 1000,
     })
 
     let index = 1;
@@ -54,6 +55,9 @@ const Correction = (props) => {
                             </div>
                         )
                     }
+                    <Row xs={1}>
+                        <MemberScripture member={props.member} />
+                    </Row>
                     <>
                         <hr />
                         <Row xs={1}>
