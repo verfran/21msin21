@@ -54,7 +54,7 @@ class GroupMain extends Component {
 
     render() {
         let showStats = false;
-        if( this.props.action === "Stats"){
+        if (this.props.action === "Stats") {
             showStats = true;
         }
 
@@ -65,10 +65,13 @@ class GroupMain extends Component {
         if (this.state.group != null && this.state.group.type === "Family Group") {
             return (<FamilyGroupPanel familyGroupID={this.state.groupID}
                 onMemberClick={this.onMemberClick}
-                onGroupClick={this.onGroupClick} />)
+                onGroupClick={this.onGroupClick}
+                showStats={showStats} />)
         }
 
-        return (<GroupPanel groupID={this.state.groupID} onGroupClick={this.onGroupClick} showStats={showStats} />);
+        return (<GroupPanel groupID={this.state.groupID}
+            onGroupClick={this.onGroupClick}
+            showStats={showStats} />);
     }
 }
 
