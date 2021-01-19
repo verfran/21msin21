@@ -2,6 +2,7 @@ import { React } from 'react';
 import { Container, Row } from 'reactstrap';
 import { useQuery } from 'react-query';
 import TitleCard from '../TitleCard.js';
+import GroupStats from '../stats/GroupStats';
 
 const textStyle = {
     color: 'blue',
@@ -54,6 +55,11 @@ const FamilyGroupPanel = (props) => {
                         <Row xs={1}>
                             <TitleCard title={data.groupInfo.name} />
                         </Row>
+                        
+                        {props.showStats === true && (
+                            <GroupStats groupID={props.familyGroupID}/>
+                        )}
+
                         {
                             data.members.map((member) =>
                                 <Row xs={1}>

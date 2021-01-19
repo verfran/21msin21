@@ -1,9 +1,16 @@
 import { React } from 'react';
 import { useQuery } from 'react-query';
 
+const textStyle = {
+    fontSize: 18,
+    paddingBottom: 18,
+    paddingLeft: 20,
+    textAlign: 'left'
+}
+
 const fetch_groupStats = async (arg) => {
     const groupid = arg.queryKey[1];
-    const response = await fetch(`http://127.0.0.1:8000/api/groupstats/${groupid}`);
+    const response = await fetch(`https://ms21-backend.herokuapp.com/api/groupstats/${groupid}`);
     return response.json()
 }
 
@@ -13,7 +20,6 @@ const GroupStats = (props) => {
         staleTime: 30 * 1000,
     })
 
-    console.log(data)
     return (
         <div>
             {status === 'loading' && (
@@ -25,9 +31,31 @@ const GroupStats = (props) => {
             )}
 
             {status === 'success' && (
-                <div>
-                    {data.memoryScriptureStats}
-                    <hr />
+                <div style={textStyle}>
+                    <div>
+                        Members {data.groupStats.memberCount.count}
+                        <br/>
+                        Women {data.groupStats.memberCount.womenCount}
+                        <br/>
+                        Men {data.groupStats.memberCount.menCount}
+                        <hr/>
+                    </div>
+                    <div>
+                        {
+                            data.groupStats.scriptureStats.map((ss) =>
+                                <div > <li>{ss.memorizedCount} memorized {ss.name}</li></div>
+                            )
+                        }
+                        <hr />
+                    </div>
+                    <div>
+                        {
+                            data.groupStats.memberCountStats.map((mc) =>
+                                <div > <li>{mc.memberMemorizedCount} memorized {mc.scriptureCount} scriptures</li></div>
+                            )
+                        }
+                        <hr />
+                    </div>
                 </div>
             )}
         </div>

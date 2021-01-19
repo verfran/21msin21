@@ -34,7 +34,10 @@ const MemberScripture = (props) => {
     const queryClient = useQueryClient()
 
     const mutation = useMutation(put_memberScripture, {
-        onSuccess: () => queryClient.invalidateQueries('memberScripture'),
+        onSuccess: () => {
+            queryClient.invalidateQueries('memberScripture')
+            queryClient.invalidateQueries('groupStats')
+        },
         onError: () => { alert("Something went wrong. Your changes are not saved. Please try later") },
     })
 
