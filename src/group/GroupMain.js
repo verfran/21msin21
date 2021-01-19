@@ -2,7 +2,8 @@ import { React, Component } from 'react';
 import GroupPanel from './GroupPanel';
 import FamilyGroupPanel from './FamilyGroupPanel';
 import FileUploadMember from '../member/FileUploadMember';
-import Correction from '../member/Correction';
+import CorrectionMember from '../member/CorrectionMember';
+import StatsMember from '../member/StatsMember';
 
 var RenderType = {
     GROUP: 1,
@@ -38,12 +39,25 @@ class GroupMain extends Component {
                 familyGroup={this.state.group} />)
         }
 
-        return (<Correction member={this.state.member}
-            onGroupClick={this.onGroupClick}
-            familyGroup={this.state.group} />)
+        if (this.props.action === "Correction") {
+            return (<CorrectionMember member={this.state.member}
+                onGroupClick={this.onGroupClick}
+                familyGroup={this.state.group} />)
+        }
+
+        if (this.props.action === "Stats") {
+            return (<StatsMember member={this.state.member}
+                onGroupClick={this.onGroupClick}
+                familyGroup={this.state.group} />)
+        }
     }
 
     render() {
+        let showStats = false;
+        if( this.props.action === "Stats"){
+            showStats = true;
+        }
+
         if (this.state.renderType === RenderType.MEMBER) {
             return this.renderAction()
         }
@@ -54,7 +68,7 @@ class GroupMain extends Component {
                 onGroupClick={this.onGroupClick} />)
         }
 
-        return (<GroupPanel group={this.state.groupID} onGroupClick={this.onGroupClick} />);
+        return (<GroupPanel groupID={this.state.groupID} onGroupClick={this.onGroupClick} showStats={showStats} />);
     }
 }
 
