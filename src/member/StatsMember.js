@@ -25,7 +25,7 @@ const fetch_urls = async (arg) => {
     return response.json()
 }
 
-const Correction = (props) => {
+const StatsMember = (props) => {
 
     const { status, data } = useQuery(['urls', props.member.id], fetch_urls, {
         staleTime: 30 * 1000,
@@ -45,7 +45,7 @@ const Correction = (props) => {
             {status === 'success' && (
                 <Container fluid>
                     <Row xs={1}>
-                        <TitleCard title={"Correction for " + props.member.name} />
+                        <TitleCard title={"Nothing done here for " + props.member.name} />
                     </Row>
                     {
                         data.urls.map((url) =>
@@ -70,4 +70,4 @@ const Correction = (props) => {
     );
 }
 
-export default Correction;
+export default StatsMember;

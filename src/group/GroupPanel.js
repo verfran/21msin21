@@ -2,6 +2,7 @@ import { React } from 'react';
 import { Container, Row } from 'reactstrap';
 import { useQuery } from 'react-query';
 import TitleCard from '../TitleCard.js';
+import GroupStats from '../stats/GroupStats';
 
 const textStyle = {
     color: 'blue',
@@ -21,7 +22,7 @@ const fetch_groups = async (arg) => {
 
 const GroupPanel = (props) => {
 
-    const { status, data } = useQuery(['group', props.group], fetch_groups, {
+    const { status, data } = useQuery(['group', props.groupID], fetch_groups, {
         staleTime: 30 * 1000,
     })
 
@@ -41,6 +42,11 @@ const GroupPanel = (props) => {
                         <Row xs={1}>
                             <TitleCard title={data.groupInfo.name} />
                         </Row>
+
+                        {props.showStats === true && (
+                            <GroupStats groupID={props.groupID}/>
+                        )}
+
                         {
                             data.groupGroups.map((child) =>
                                 <Row xs={1}>
