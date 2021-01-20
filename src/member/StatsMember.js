@@ -2,13 +2,14 @@ import { React } from 'react';
 import { useQuery } from 'react-query';
 import { Container, Row } from 'reactstrap';
 import TitleCard from '../TitleCard.js';
-import MemberScripture from './MemberScripture';
 
-const linkStyle = {
-    textAlign: 'center',
-    padding: "5px",
+const textStyle = {
     fontSize: 18,
+    paddingBottom: 18,
+    paddingLeft: 20,
+    textAlign: 'left'
 }
+
 const clickableTextStyle = {
     color: 'blue',
     cursor: 'pointer',
@@ -19,19 +20,18 @@ const clickableTextStyle = {
     textAlign: 'left'
 }
 
-const fetch_urls = async (arg) => {
+const fetch_memberScriptures = async (arg) => {
     const memid = arg.queryKey[1];
-    const response = await fetch(`https://ms21-backend.herokuapp.com/api/memberfiles/${memid}`);
+    const response = await fetch(`https://ms21-backend.herokuapp.com/api/memberscriptures/${memid}`);
     return response.json()
 }
 
 const StatsMember = (props) => {
-
-    const { status, data } = useQuery(['urls', props.member.id], fetch_urls, {
+    const { status, data } = useQuery(['memberScripture', props.member.id], fetch_memberScriptures, {
         staleTime: 30 * 1000,
     })
 
-    let index = 1;
+    console.log(data)
     return (
         <div>
             {status === 'loading' && (
@@ -45,19 +45,16 @@ const StatsMember = (props) => {
             {status === 'success' && (
                 <Container fluid>
                     <Row xs={1}>
-                        <TitleCard title={"Nothing done here for " + props.member.name} />
+                        <TitleCard title={props.member.name} />
                     </Row>
-                    {
-                        data.urls.map((url) =>
-                            <div style={linkStyle}>
-                                <a href={url}>File {index++}</a>
-                                <br />
-                            </div>
-                        )
-                    }
-                    <Row xs={1}>
-                        <MemberScripture member={props.member} />
-                    </Row>
+                    <br/>
+                    <div style={textStyle}>
+                        {
+                            data.memberScriptures.map((ms) =>
+                                <div > <li>{ms.scripture} {ms.memorized}</li></div>
+                            )
+                        }
+                    </div>
                     <>
                         <hr />
                         <Row xs={1}>
