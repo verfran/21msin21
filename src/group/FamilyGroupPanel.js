@@ -16,13 +16,13 @@ const textStyle = {
 
 const fetch_members = async (arg) => {
     const groupid = arg.queryKey[1];
-    const response = await fetch(`https://ms21-backend.herokuapp.com/api/members/${groupid}`);
+    const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/members/${groupid}`);
     return response.json()
 }
 
 const fetch_parentgroup = async (arg) => {
     const groupid = arg.queryKey[1];
-    const response = await fetch(`https://ms21-backend.herokuapp.com/api/parentgroup/${groupid}`);
+    const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/parentgroup/${groupid}`);
     return response.json()
 }
 
@@ -61,9 +61,9 @@ const FamilyGroupPanel = (props) => {
                         )}
 
                         {
-                            data.members.map((member) =>
-                                <Row xs={1}>
-                                    <div style={textStyle} onClick={() => props.onMemberClick(member)}> <li>{member.name}</li></div>
+                            data.members.map((member, index) =>
+                                <Row xs={1} key={index}>
+                                    <div style={textStyle} onClick={() => props.onMemberClick(member)}> <li>{member.firstName}</li></div>
                                 </Row>
                             )
                         }

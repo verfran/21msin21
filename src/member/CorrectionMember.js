@@ -21,7 +21,7 @@ const clickableTextStyle = {
 
 const fetch_urls = async (arg) => {
     const memid = arg.queryKey[1];
-    const response = await fetch(`https://ms21-backend.herokuapp.com/api/memberfiles/${memid}`);
+    const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/memberfiles/${memid}`);
     return response.json()
 }
 

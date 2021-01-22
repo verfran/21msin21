@@ -11,7 +11,7 @@ const nameStyle = {
 
 const fetch_memberScriptures = async (arg) => {
     const memid = arg.queryKey[1];
-    const response = await fetch(`https://ms21-backend.herokuapp.com/api/memberscriptures/${memid}`);
+    const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/memberscriptures/${memid}`);
     return response.json()
 }
 
@@ -21,7 +21,7 @@ const put_memberScripture = async (ms) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ "memorized": ms.memorized })
     };
-    const response = await fetch(`https://ms21-backend.herokuapp.com/api/updatememberscripture/${ms.msid}/`, requestOptions)
+    const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/updatememberscripture/${ms.msid}/`, requestOptions)
     return response.json()
 }
 

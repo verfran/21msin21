@@ -47,7 +47,7 @@ class Login extends Component {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
         };
-        fetch('https://ms21-backend.herokuapp.com/api/login/', requestOptions)
+        fetch('https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/login/', requestOptions)
             .then(response => {
                 if (response.ok) {
                     return response.json()

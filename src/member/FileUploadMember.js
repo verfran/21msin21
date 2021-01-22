@@ -51,7 +51,7 @@ class FileUploadMember extends Component {
             method: 'POST',
             body: formData,
         };
-        fetch('https://ms21-backend.herokuapp.com/api/fileupload/', requestOptions)
+        fetch('https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/fileupload/', requestOptions)
             .then(response => response.json())
             .then(this.setState(
                 {

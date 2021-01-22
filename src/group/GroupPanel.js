@@ -16,7 +16,7 @@ const textStyle = {
 
 const fetch_groups = async (arg) => {
     const groupid = arg.queryKey[1];
-    const response = await fetch(`https://ms21-backend.herokuapp.com/api/groups/${groupid}`);
+    const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/groups/${groupid}`);
     return response.json()
 }
 
@@ -48,8 +48,8 @@ const GroupPanel = (props) => {
                         )}
 
                         {
-                            data.groupGroups.map((child) =>
-                                <Row xs={1}>
+                            data.groupGroups.map((child, index) =>
+                                <Row xs={1} key={index}>
                                     <div style={textStyle} onClick={() => props.onGroupClick(child)}> <li>{child.name}</li></div>
                                 </Row>
                             )
