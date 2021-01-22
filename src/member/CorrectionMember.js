@@ -45,11 +45,11 @@ const CorrectionMember = (props) => {
             {status === 'success' && (
                 <Container fluid>
                     <Row xs={1}>
-                        <TitleCard title={"Correction for " + props.member.name} />
+                        <TitleCard title={"Correction for " + props.member.firstName} />
                     </Row>
                     {
                         data.urls.map((url) =>
-                            <div style={linkStyle}>
+                            <div style={linkStyle} key={index}>
                                 <a href={url}>File {index++}</a>
                                 <br />
                             </div>
