@@ -68,7 +68,7 @@ class FileUploadMember extends Component {
             <div style={formStyle}>
                 <Container fluid>
                     <Row xs={1}>
-                        <TitleCard title={"Upload file for " + this.props.member.name} />
+                        <TitleCard title={"Upload file for " + this.props.member.firstName} />
                     </Row>
                     <Row xs={1}>
                         <UploadedFiles memberid={this.props.member.id} />

@@ -34,7 +34,7 @@ const UploadedFiles = (props) => {
                 <div>
                     {
                         data.urls.map((url) =>
-                            <div style={linkStyle}>
+                            <div style={linkStyle} key={index}>
                                 <a href={url}>File {index++}</a>
                                 <br />
                             </div>
