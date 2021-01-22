@@ -16,7 +16,7 @@ const textStyle = {
 
 const fetch_groups = async (arg) => {
     const groupid = arg.queryKey[1];
-    const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/groups/${groupid}`);
+    const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/groups/${groupid}/`);
     return response.json()
 }
 
