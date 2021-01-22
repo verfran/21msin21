@@ -39,7 +39,7 @@ class ScoreMain extends Component {
         const requestOptions = {
             headers: { 'Content-Type': 'application/json', 'Authorization': 'Token ' + this.state.token },
         };
-        fetch('https://ms21-backend.herokuapp.com/api/msscore/' + this.state.groupID + '/', requestOptions)
+        fetch('https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/msscore/' + this.state.groupID + '/', requestOptions)
             .then(res => res.json())
             .then(json => {
                 this.setState({

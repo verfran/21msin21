@@ -10,7 +10,7 @@ const textStyle = {
 
 const fetch_groupStats = async (arg) => {
     const groupid = arg.queryKey[1];
-    const response = await fetch(`https://ms21-backend.herokuapp.com/api/groupstats/${groupid}`);
+    const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/groupstats/${groupid}`);
     return response.json()
 }
 
@@ -42,16 +42,16 @@ const GroupStats = (props) => {
                     </div>
                     <div>
                         {
-                            data.groupStats.scriptureStats.map((ss) =>
-                                <div > <li>{ss.memorizedCount} memorized {ss.name}</li></div>
+                            data.groupStats.scriptureStats.map((ss, index) =>
+                                <div key={index}> <li>{ss.memorizedCount} memorized {ss.name}</li></div>
                             )
                         }
                         <hr />
                     </div>
                     <div>
                         {
-                            data.groupStats.memberCountStats.map((mc) =>
-                                <div > <li>{mc.memberMemorizedCount} memorized {mc.scriptureCount} scriptures</li></div>
+                            data.groupStats.memberCountStats.map((mc, index) =>
+                                <div key={index}> <li>{mc.memberMemorizedCount} memorized {mc.scriptureCount} scriptures</li></div>
                             )
                         }
                         <hr />

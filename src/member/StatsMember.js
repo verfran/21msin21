@@ -22,7 +22,7 @@ const clickableTextStyle = {
 
 const fetch_memberScriptures = async (arg) => {
     const memid = arg.queryKey[1];
-    const response = await fetch(`https://ms21-backend.herokuapp.com/api/memberscriptures/${memid}`);
+    const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/memberscriptures/${memid}`);
     return response.json()
 }
 
@@ -45,13 +45,13 @@ const StatsMember = (props) => {
             {status === 'success' && (
                 <Container fluid>
                     <Row xs={1}>
-                        <TitleCard title={props.member.name} />
+                        <TitleCard title={props.member.firstName} />
                     </Row>
                     <br/>
                     <div style={textStyle}>
                         {
-                            data.memberScriptures.map((ms) =>
-                                <div > <li>{ms.scripture} {ms.memorized}</li></div>
+                            data.memberScriptures.map((ms, index) =>
+                                <div key={index}> <li>{ms.scripture} {ms.memorized}</li></div>
                             )
                         }
                     </div>

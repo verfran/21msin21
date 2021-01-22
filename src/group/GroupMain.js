@@ -14,7 +14,7 @@ class GroupMain extends Component {
     constructor() {
         super();
         this.state = {
-            groupID: 2,
+            groupID: 1,
             group: null,
             renderType: RenderType.GROUP,
         }
