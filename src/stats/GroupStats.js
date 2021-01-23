@@ -14,7 +14,7 @@ const fetch_groupStats = async (arg) => {
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Token ' + arg.queryKey[2] },
     };
 
-    const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/groupstats/${groupid}`, requestOptions);
+    const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/groupstats/${groupid}/`, requestOptions);
     return response.json()
 }
 
