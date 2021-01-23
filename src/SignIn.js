@@ -59,15 +59,16 @@ class SignIn extends Component {
             }
             )
             .then((data) => {
-                this.props.setToken(data.token)
+                this.props.setUserData(data.userData)
                 this.setState({
-                    token: data.token,
+                    token: data.userData.token,
                     showLoginFailedMsg: "false"
                 })
                 return;
             }
             )
             .catch((error) => {
+                console.log("error=", error)
             });
     }
 

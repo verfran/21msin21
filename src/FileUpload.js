@@ -5,7 +5,7 @@ import withSignIn from "./withSignIn";
 const FileUpload = (props) => {
     return (
         <div>
-            <GroupMain action="FileUpload" token={props.token} />
+            <GroupMain action="FileUpload" userData={props.userData} />
         </div>
     );
 }

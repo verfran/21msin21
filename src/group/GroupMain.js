@@ -14,10 +14,14 @@ class GroupMain extends Component {
     constructor() {
         super();
         this.state = {
-            groupID: 1,
+            groupID: -1,
             group: null,
             renderType: RenderType.GROUP,
         }
+    }
+
+    componentDidMount() {
+        this.setState({ groupID: this.props.userData.rootGroupID });
     }
 
     onGroupClick = (grp) => {
@@ -37,25 +41,28 @@ class GroupMain extends Component {
             return (<FileUploadMember member={this.state.member}
                 onGroupClick={this.onGroupClick}
                 familyGroup={this.state.group}
-                token={this.props.token} />)
+                token={this.props.userData.token} />)
         }
 
         if (this.props.action === "Correction") {
             return (<CorrectionMember member={this.state.member}
                 onGroupClick={this.onGroupClick}
                 familyGroup={this.state.group}
-                token={this.props.token} />)
+                token={this.props.userData.token} />)
         }
 
         if (this.props.action === "Stats") {
             return (<StatsMember member={this.state.member}
                 onGroupClick={this.onGroupClick}
                 familyGroup={this.state.group}
-                token={this.props.token} />)
+                token={this.props.userData.token} />)
         }
     }
 
     render() {
+        if (this.state.groupID === -1) {
+            return (<div>no permission</div>)
+        }
         let showStats = false;
         if (this.props.action === "Stats") {
             showStats = true;
@@ -70,13 +77,13 @@ class GroupMain extends Component {
                 onMemberClick={this.onMemberClick}
                 onGroupClick={this.onGroupClick}
                 showStats={showStats}
-                token={this.props.token} />)
+                userData={this.props.userData} />)
         }
 
         return (<GroupPanel groupID={this.state.groupID}
             onGroupClick={this.onGroupClick}
             showStats={showStats}
-            token={this.props.token} />);
+            userData={this.props.userData} />);
     }
 }
 

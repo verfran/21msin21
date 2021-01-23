@@ -7,25 +7,25 @@ const withSignIn = WrappedComponent => {
             super();
             this.state = {
                 isSignedIn: false,
-                token: '',
+                userData: null,
             }
         }
 
-        setToken = (tok) => {
-            this.setState({ token: tok, isSignedIn: true })
+        setUserData = (ud) => {
+            this.setState({ userData: ud, isSignedIn: true })
         }
 
         render() {
             if (!this.state.isSignedIn) {
                 return (
                     <div>
-                        <SignIn setToken={this.setToken} />
+                        <SignIn setUserData={this.setUserData} />
                     </div>
                 )
             }
             return (
                 <div>
-                    <WrappedComponent {...this.props} token={this.state.token} />
+                    <WrappedComponent {...this.props} userData={this.state.userData} />
                 </div>)
         }
     }
