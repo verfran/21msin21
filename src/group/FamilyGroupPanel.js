@@ -36,14 +36,14 @@ const fetch_parentgroup = async (arg) => {
 
 const FamilyGroupPanel = (props) => {
 
-    const { status, data } = useQuery(['members', props.familyGroupID, props.token], fetch_members, {
+    const { status, data } = useQuery(['members', props.familyGroupID, props.userData.token], fetch_members, {
         staleTime: 30 * 1000,
     })
 
     const {
         status: pgstatus,
         data: pgdata
-    } = useQuery(['parentgroup', props.familyGroupID, props.token], fetch_parentgroup, {
+    } = useQuery(['parentgroup', props.familyGroupID, props.userData.token], fetch_parentgroup, {
         staleTime: 30 * 1000,
     })
 
@@ -63,9 +63,9 @@ const FamilyGroupPanel = (props) => {
                         <Row xs={1}>
                             <TitleCard title={data.groupInfo.name} />
                         </Row>
-                        
+
                         {props.showStats === true && (
-                            <GroupStats groupID={props.familyGroupID} token={props.token}/>
+                            <GroupStats groupID={props.familyGroupID} token={props.userData.token} />
                         )}
 
                         {
@@ -75,14 +75,7 @@ const FamilyGroupPanel = (props) => {
                                 </Row>
                             )
                         }
-                        
-                        {pgstatus === 'loading' && (
-                            <div>Loading parent group ...</div>
-                        )}
 
-                        {pgstatus === 'error' && (
-                            <div>Error fetching parent group</div>
-                        )}
                         {pgstatus === 'success' && (
                             <>
                                 <hr />

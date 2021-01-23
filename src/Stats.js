@@ -5,7 +5,7 @@ import withSignIn from "./withSignIn";
 const Stats = (props) => {
     return (
         <div>
-            <GroupMain action="Stats" token={props.token} />
+            <GroupMain action="Stats" userData={props.userData} />
         </div>
     );
 }

@@ -5,7 +5,7 @@ import withSignIn from "./withSignIn";
 const Correction = (props) => {
     return (
         <div>
-            <GroupMain action="Correction" token={props.token} />
+            <GroupMain action="Correction" userData={props.userData} />
         </div>
     );
 }

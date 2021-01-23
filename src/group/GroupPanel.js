@@ -27,7 +27,7 @@ const fetch_groups = async (arg) => {
 
 const GroupPanel = (props) => {
 
-    const { status, data } = useQuery(['group', props.groupID, props.token], fetch_groups, {
+    const { status, data } = useQuery(['group', props.groupID, props.userData.token], fetch_groups, {
         staleTime: 30 * 1000,
     })
 
@@ -49,7 +49,7 @@ const GroupPanel = (props) => {
                         </Row>
 
                         {props.showStats === true && (
-                            <GroupStats groupID={props.groupID} token={props.token} />
+                            <GroupStats groupID={props.groupID} token={props.userData.token} />
                         )}
 
                         {
@@ -60,7 +60,8 @@ const GroupPanel = (props) => {
                             )
                         }
                         <hr />
-                        {data.groupInfo.parentGroup != null && (
+                        {data.groupInfo.parentGroup != null && 
+                        props.groupID !== props.userData.rootGroupID &&(
                             <Row xs={1}>
                                 <div style={textStyle} onClick={() => props.onGroupClick(data.parentGroupInfo)}> <li>{data.parentGroupInfo.name}</li></div>
                             </Row>
