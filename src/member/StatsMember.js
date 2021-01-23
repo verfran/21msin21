@@ -2,6 +2,7 @@ import { React } from 'react';
 import { useQuery } from 'react-query';
 import { Container, Row } from 'reactstrap';
 import TitleCard from '../TitleCard.js';
+import Loader from '../Loader';
 
 const textStyle = {
     fontSize: 18,
@@ -25,7 +26,7 @@ const fetch_memberScriptures = async (arg) => {
     const requestOptions = {
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Token ' + arg.queryKey[2] },
     };
-   const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/memberscriptures/${memid}/`, requestOptions);
+    const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/memberscriptures/${memid}/`, requestOptions);
     return response.json()
 }
 
@@ -34,12 +35,9 @@ const StatsMember = (props) => {
         staleTime: 30 * 1000,
     })
 
-    console.log(data)
     return (
         <div>
-            {status === 'loading' && (
-                <div>Loading data ...</div>
-            )}
+            {status === 'loading' && (<Loader />)}
 
             {status === 'error' && (
                 <div>Error fetching data</div>
@@ -50,7 +48,7 @@ const StatsMember = (props) => {
                     <Row xs={1}>
                         <TitleCard title={props.member.firstName} />
                     </Row>
-                    <br/>
+                    <br />
                     <div style={textStyle}>
                         {
                             data.memberScriptures.map((ms, index) =>

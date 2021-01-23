@@ -3,6 +3,7 @@ import { Container, Row } from 'reactstrap';
 import { useQuery } from 'react-query';
 import TitleCard from '../TitleCard.js';
 import GroupStats from '../stats/GroupStats';
+import Loader from '../Loader';
 
 const textStyle = {
     color: 'blue',
@@ -49,7 +50,7 @@ const FamilyGroupPanel = (props) => {
     return (
         <div>
             {status === 'loading' && (
-                <div>Loading members ...</div>
+                <Loader />
             )}
 
             {status === 'error' && (

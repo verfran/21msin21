@@ -1,5 +1,6 @@
 import { React } from 'react';
 import { useQuery } from 'react-query';
+import Loader from '../Loader';
 
 const linkStyle = {
     textAlign: 'center',
@@ -27,7 +28,7 @@ const UploadedFiles = (props) => {
     return (
         <div>
             {status === 'loading' && (
-                <div>Loading data ...</div>
+                <Loader />
             )}
 
             {status === 'error' && (

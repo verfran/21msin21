@@ -1,6 +1,7 @@
 import { React } from 'react';
 import { useQueryClient, useMutation, useQuery } from 'react-query';
 import { Form, FormGroup, Label, Input } from 'reactstrap';
+import Loader from '../Loader';
 
 const nameStyle = {
     color: 'black',
@@ -85,9 +86,7 @@ const MemberScripture = (props) => {
 
     return (
         <div>
-            {status === 'loading' && (
-                <div>Loading data ...</div>
-            )}
+           {status === 'loading' && (<Loader />)}
 
             {status === 'error' && (
                 <div>Error fetching data</div>
