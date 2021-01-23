@@ -21,13 +21,17 @@ const clickableTextStyle = {
 
 const fetch_urls = async (arg) => {
     const memid = arg.queryKey[1];
-    const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/memberfiles/${memid}`);
+    const requestOptions = {
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Token ' + arg.queryKey[2] },
+    };
+
+    const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/memberfiles/${memid}`, requestOptions);
     return response.json()
 }
 
 const CorrectionMember = (props) => {
 
-    const { status, data } = useQuery(['urls', props.member.id], fetch_urls, {
+    const { status, data } = useQuery(['urls', props.member.id, props.token], fetch_urls, {
         staleTime: 30 * 1000,
     })
 
@@ -56,7 +60,8 @@ const CorrectionMember = (props) => {
                         )
                     }
                     <Row xs={1}>
-                        <MemberScripture member={props.member} />
+                        <MemberScripture member={props.member}
+                            token={props.token} />
                     </Row>
                     <>
                         <hr />

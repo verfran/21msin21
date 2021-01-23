@@ -22,12 +22,15 @@ const clickableTextStyle = {
 
 const fetch_memberScriptures = async (arg) => {
     const memid = arg.queryKey[1];
-    const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/memberscriptures/${memid}`);
+    const requestOptions = {
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Token ' + arg.queryKey[2] },
+    };
+   const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/memberscriptures/${memid}`, requestOptions);
     return response.json()
 }
 
 const StatsMember = (props) => {
-    const { status, data } = useQuery(['memberScripture', props.member.id], fetch_memberScriptures, {
+    const { status, data } = useQuery(['memberScripture', props.member.id, props.token], fetch_memberScriptures, {
         staleTime: 30 * 1000,
     })
 
