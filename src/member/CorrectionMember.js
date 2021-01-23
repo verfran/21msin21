@@ -3,6 +3,7 @@ import { useQuery } from 'react-query';
 import { Container, Row } from 'reactstrap';
 import TitleCard from '../TitleCard.js';
 import MemberScripture from './MemberScripture';
+import Loader from '../Loader';
 
 const linkStyle = {
     textAlign: 'center',
@@ -38,9 +39,7 @@ const CorrectionMember = (props) => {
     let index = 1;
     return (
         <div>
-            {status === 'loading' && (
-                <div>Loading data ...</div>
-            )}
+            {status === 'loading' && (<Loader />)}
 
             {status === 'error' && (
                 <div>Error fetching data</div>

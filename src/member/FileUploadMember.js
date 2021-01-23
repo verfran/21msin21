@@ -3,6 +3,7 @@ import { FormGroup, FormText, Button, Input } from 'reactstrap';
 import { Container, Row } from 'reactstrap';
 import TitleCard from '../TitleCard.js';
 import UploadedFiles from './UploadedFiles.js';
+import { ClimbingBoxLoader } from 'react-spinners'
 
 const formStyle = {
     padding: "30px",
@@ -18,12 +19,27 @@ const clickableTextStyle = {
     textAlign: 'left'
 }
 
+const uploadTextStyle = {
+    color: '#003366',
+    fontSize: 18,
+    padding: 10,
+    textAlign: 'center'
+}
+
+const loadingIconStyle = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "100px",
+}
+
 class FileUploadMember extends Component {
     constructor() {
         super();
         this.state = {
             fileName: "",
             selectedFile: null,
+            isUploading: false,
         }
     }
 
@@ -42,6 +58,10 @@ class FileUploadMember extends Component {
             return
         }
 
+        this.setState({ isUploading: true }, () => { this.fileUpload() })
+    }
+
+    fileUpload = () => {
         const formData = new FormData()
 
         formData.append("name", this.state.selectedFile)
@@ -54,17 +74,30 @@ class FileUploadMember extends Component {
         };
         fetch('https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/fileupload/', requestOptions)
             .then(response => response.json())
-            .then(this.setState(
-                {
-                    fileName: "",
-                    selectedFile: null,
-                }
-            ))
-
-        this.props.onGroupClick(this.props.familyGroup)
+            .then(() => {
+                this.setState(
+                    {
+                        fileName: "",
+                        selectedFile: null,
+                        isUploading: false,
+                    }
+                )
+            })
     }
 
     render() {
+
+        if (this.state.isUploading) {
+            return (
+                <>
+                    <div style={loadingIconStyle}>
+                        <ClimbingBoxLoader size={25} color='#003366' />
+                    </div>
+                    <div style={uploadTextStyle}>Uploading file. Please wait.<br/>You will be re-directed to member page once the upload is done</div>
+                </>
+            )
+        }
+
         return (
             <div style={formStyle}>
                 <Container fluid>
