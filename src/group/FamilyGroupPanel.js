@@ -20,7 +20,7 @@ const fetch_members = async (arg) => {
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Token ' + arg.queryKey[2] },
     };
 
-    const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/members/${groupid}`, requestOptions);
+    const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/members/${groupid}/`, requestOptions);
     return response.json()
 }
 
@@ -29,7 +29,7 @@ const fetch_parentgroup = async (arg) => {
     const requestOptions = {
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Token ' + arg.queryKey[2] },
     };
-    const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/parentgroup/${groupid}`, requestOptions);
+    const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/parentgroup/${groupid}/`, requestOptions);
     return response.json()
 }
 

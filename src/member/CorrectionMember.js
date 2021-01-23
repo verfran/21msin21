@@ -25,7 +25,7 @@ const fetch_urls = async (arg) => {
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Token ' + arg.queryKey[2] },
     };
 
-    const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/memberfiles/${memid}`, requestOptions);
+    const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/memberfiles/${memid}/`, requestOptions);
     return response.json()
 }
 
