@@ -33,7 +33,7 @@ const put_memberScripture = async (ms) => {
 const MemberScripture = (props) => {
 
     const { status, data } = useQuery(['memberScripture', props.member.id, props.token], fetch_memberScriptures, {
-        staleTime: 30 * 1000,
+        staleTime: 0.2 * 1000,
     })
 
     const queryClient = useQueryClient()
@@ -51,6 +51,7 @@ const MemberScripture = (props) => {
         if (event.target.checked) {
             checked = 'Y'
         }
+        console.log("mutating",checked, selMem.memorized,selMem.scripture)
         mutation.mutate({
             msid: selMem.id,
             memorized: checked,
@@ -59,6 +60,7 @@ const MemberScripture = (props) => {
     };
 
     const renderCheckBox = (ms) => {
+        console.log("rendering",ms.memorized,ms.scripture)
         if (ms.memorized === 'Y') {
             return (
                 <div style={nameStyle}>
@@ -83,6 +85,12 @@ const MemberScripture = (props) => {
             </div>
         )
     }
+    
+    if(mutation.isLoading){
+        return(
+            <div>updating</div>
+        )
+    }
 
     return (
         <div>
@@ -94,7 +102,6 @@ const MemberScripture = (props) => {
 
             {status === 'success' && (
                 <>
-                    <hr />
                     <Form style={{ padding: "20px" }}>
                         {data.memberScriptures.map((ms) => renderCheckBox(ms))}
                     </Form>

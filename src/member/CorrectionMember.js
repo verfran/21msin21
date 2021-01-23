@@ -2,7 +2,7 @@ import { React } from 'react';
 import { useQuery } from 'react-query';
 import { Container, Row } from 'reactstrap';
 import TitleCard from '../TitleCard.js';
-import MemberScripture from './MemberScripture';
+import MemberScriptures from './MemberScriptures';
 import Loader from '../Loader';
 
 const linkStyle = {
@@ -59,7 +59,7 @@ const CorrectionMember = (props) => {
                         )
                     }
                     <Row xs={1}>
-                        <MemberScripture member={props.member}
+                        <MemberScriptures member={props.member}
                             token={props.token} />
                     </Row>
                     <>
