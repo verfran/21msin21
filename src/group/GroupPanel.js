@@ -16,13 +16,17 @@ const textStyle = {
 
 const fetch_groups = async (arg) => {
     const groupid = arg.queryKey[1];
-    const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/groups/${groupid}/`);
+    const requestOptions = {
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Token ' + arg.queryKey[2] },
+    };
+
+    const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/groups/${groupid}/`, requestOptions);
     return response.json()
 }
 
 const GroupPanel = (props) => {
 
-    const { status, data } = useQuery(['group', props.groupID], fetch_groups, {
+    const { status, data } = useQuery(['group', props.groupID, props.token], fetch_groups, {
         staleTime: 30 * 1000,
     })
 
@@ -44,7 +48,7 @@ const GroupPanel = (props) => {
                         </Row>
 
                         {props.showStats === true && (
-                            <GroupStats groupID={props.groupID}/>
+                            <GroupStats groupID={props.groupID} token={props.token}/>
                         )}
 
                         {

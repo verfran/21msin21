@@ -10,13 +10,17 @@ const textStyle = {
 
 const fetch_groupStats = async (arg) => {
     const groupid = arg.queryKey[1];
-    const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/groupstats/${groupid}`);
+    const requestOptions = {
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Token ' + arg.queryKey[2] },
+    };
+
+    const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/groupstats/${groupid}`, requestOptions);
     return response.json()
 }
 
 const GroupStats = (props) => {
 
-    const { status, data } = useQuery(['groupStats', props.groupID], fetch_groupStats, {
+    const { status, data } = useQuery(['groupStats', props.groupID, props.token], fetch_groupStats, {
         staleTime: 30 * 1000,
     })
 

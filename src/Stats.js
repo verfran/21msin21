@@ -1,12 +1,13 @@
 import React from 'react';
 import GroupMain from './group/GroupMain';
+import withSignIn from "./withSignIn";
 
 const Stats = (props) => {
     return (
         <div>
-            <GroupMain action="Stats"/>
+            <GroupMain action="Stats" token={props.token} />
         </div>
     );
 }
 
-export default Stats;
+export default withSignIn(Stats);

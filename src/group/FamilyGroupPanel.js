@@ -16,26 +16,33 @@ const textStyle = {
 
 const fetch_members = async (arg) => {
     const groupid = arg.queryKey[1];
-    const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/members/${groupid}`);
+    const requestOptions = {
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Token ' + arg.queryKey[2] },
+    };
+
+    const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/members/${groupid}`, requestOptions);
     return response.json()
 }
 
 const fetch_parentgroup = async (arg) => {
     const groupid = arg.queryKey[1];
-    const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/parentgroup/${groupid}`);
+    const requestOptions = {
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Token ' + arg.queryKey[2] },
+    };
+    const response = await fetch(`https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/parentgroup/${groupid}`, requestOptions);
     return response.json()
 }
 
 const FamilyGroupPanel = (props) => {
 
-    const { status, data } = useQuery(['members', props.familyGroupID], fetch_members, {
+    const { status, data } = useQuery(['members', props.familyGroupID, props.token], fetch_members, {
         staleTime: 30 * 1000,
     })
 
     const {
         status: pgstatus,
         data: pgdata
-    } = useQuery(['parentgroup', props.familyGroupID], fetch_parentgroup, {
+    } = useQuery(['parentgroup', props.familyGroupID, props.token], fetch_parentgroup, {
         staleTime: 30 * 1000,
     })
 
@@ -57,7 +64,7 @@ const FamilyGroupPanel = (props) => {
                         </Row>
                         
                         {props.showStats === true && (
-                            <GroupStats groupID={props.familyGroupID}/>
+                            <GroupStats groupID={props.familyGroupID} token={props.token}/>
                         )}
 
                         {

@@ -36,19 +36,22 @@ class GroupMain extends Component {
         if (this.props.action === "FileUpload") {
             return (<FileUploadMember member={this.state.member}
                 onGroupClick={this.onGroupClick}
-                familyGroup={this.state.group} />)
+                familyGroup={this.state.group}
+                token={this.props.token} />)
         }
 
         if (this.props.action === "Correction") {
             return (<CorrectionMember member={this.state.member}
                 onGroupClick={this.onGroupClick}
-                familyGroup={this.state.group} />)
+                familyGroup={this.state.group}
+                token={this.props.token} />)
         }
 
         if (this.props.action === "Stats") {
             return (<StatsMember member={this.state.member}
                 onGroupClick={this.onGroupClick}
-                familyGroup={this.state.group} />)
+                familyGroup={this.state.group}
+                token={this.props.token} />)
         }
     }
 
@@ -66,12 +69,14 @@ class GroupMain extends Component {
             return (<FamilyGroupPanel familyGroupID={this.state.groupID}
                 onMemberClick={this.onMemberClick}
                 onGroupClick={this.onGroupClick}
-                showStats={showStats} />)
+                showStats={showStats}
+                token={this.props.token} />)
         }
 
         return (<GroupPanel groupID={this.state.groupID}
             onGroupClick={this.onGroupClick}
-            showStats={showStats} />);
+            showStats={showStats}
+            token={this.props.token} />);
     }
 }
 

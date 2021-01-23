@@ -50,6 +50,7 @@ class FileUploadMember extends Component {
         const requestOptions = {
             method: 'POST',
             body: formData,
+            headers: { 'Authorization': 'Token ' + this.props.token },
         };
         fetch('https://icoc-mgt-dashboard-backend.herokuapp.com/api/southMS/fileupload/', requestOptions)
             .then(response => response.json())
@@ -71,7 +72,7 @@ class FileUploadMember extends Component {
                         <TitleCard title={"Upload file for " + this.props.member.firstName} />
                     </Row>
                     <Row xs={1}>
-                        <UploadedFiles memberid={this.props.member.id} />
+                        <UploadedFiles memberid={this.props.member.id} token={this.props.token} />
                     </Row>
                     <br />
                     <FormGroup row>
