@@ -1,8 +1,6 @@
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './Home';
 import HomeKannada from './HomeKannada';
-import Update from './Update';
-import ScoreMain from './score/ScoreMain';
 import { QueryClient, QueryClientProvider } from 'react-query'
 import Correction from './Correction';
 import FileUpload from './FileUpload';
@@ -23,15 +21,6 @@ function App() {
             )} />
             <Route exact={true} path="/Kannada" render={() => (
               <HomeKannada />
-            )} />
-            <Route exact={true} path="/update" render={() => (
-              <Update />
-            )} />
-            <Route exact={true} path="/preview" render={() => (
-              <Home showPreview="true" />
-            )} />
-            <Route exact={true} path="/MSScore" render={() => (
-              <ScoreMain />
             )} />
             <Route exact={true} path="/MSFileUpload" render={() => (
               <FileUpload />

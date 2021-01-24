@@ -60,9 +60,6 @@ class GroupMain extends Component {
     }
 
     render() {
-        if (this.state.groupID === -1) {
-            return (<div>no permission</div>)
-        }
         let showStats = false;
         if (this.props.action === "Stats") {
             showStats = true;
