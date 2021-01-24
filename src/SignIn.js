@@ -5,22 +5,27 @@ import {
     Button, Alert,
 } from 'reactstrap';
 
+var SignInStatus = {
+    SIGN_IN_UNKNOWN: 1,
+    SIGN_IN_FAILED: 3,
+    SIGN_IN_NO_PERMISSION: 5,
+}
+
 class SignIn extends Component {
     constructor(props) {
         super(props);
         this.state = {
             email: '',
             password: '',
-            token: '',
-            showLoginFailedMsg: "false"
+            signInStatus: SignInStatus.SIGN_IN_UNKNOWN,
         };
     }
 
     onChangeEmail = (event) => {
         this.setState(
             {
+                signInStatus: SignInStatus.SIGN_IN_UNKNOWN,
                 email: event.target.value,
-                showLoginFailedMsg: "false"
             }
         )
     }
@@ -28,16 +33,13 @@ class SignIn extends Component {
     onChangePassword = (event) => {
         this.setState(
             {
+                signInStatus: SignInStatus.SIGN_IN_UNKNOWN,
                 password: event.target.value,
-                showLoginFailedMsg: "false"
             }
         )
     }
 
     onSubmit = () => {
-        this.setState({
-            token: ''
-        })
         const payload = {
             email: this.state.email,
             password: this.state.password,
@@ -53,16 +55,21 @@ class SignIn extends Component {
                     return response.json()
                 }
                 this.setState({
-                    token: '',
-                    showLoginFailedMsg: "true"
+                    signInStatus: SignInStatus.SIGN_IN_FAILED,
                 })
             }
             )
             .then((data) => {
+                if (data.userData.rootGroupID === -1) {
+                    this.setState({
+                        signInStatus: SignInStatus.SIGN_IN_NO_PERMISSION,
+                    })
+                    return;
+                }
+                // looks like a successful Sign In
                 this.props.setUserData(data.userData)
                 this.setState({
-                    token: data.userData.token,
-                    showLoginFailedMsg: "false"
+                    signInStatus: SignInStatus.SIGN_IN_UNKNOWN,
                 })
                 return;
             }
@@ -73,15 +80,21 @@ class SignIn extends Component {
     }
 
     renderLoginFailed = () => {
-        if (this.state.showLoginFailedMsg === "true") {
-            return (
-                <div style={{ padding: "20px", textAlign: 'center' }}>
-                    <Alert color="danger">
-                        Login failed, try again
-                    </Alert>
-                </div>
-            )
+        if (this.state.signInStatus === SignInStatus.SIGN_IN_UNKNOWN ) {
+            return;
         }
+
+        let errorMessage = "Sign In failed, try again"
+        if (this.state.signInStatus === SignInStatus.SIGN_IN_NO_PERMISSION) {
+            errorMessage = "Sign In failed. You don't have access rights for this page"
+        }
+        return (
+            <div style={{ padding: "20px", textAlign: 'center' }}>
+                <Alert color="danger">
+                    {errorMessage}
+                </Alert>
+            </div>
+        )
     }
 
     render() {
