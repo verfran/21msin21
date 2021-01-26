@@ -18,6 +18,7 @@ class SignIn extends Component {
             email: '',
             password: '',
             signInStatus: SignInStatus.SIGN_IN_UNKNOWN,
+            signInDisabled: false,
         };
     }
 
@@ -40,6 +41,9 @@ class SignIn extends Component {
     }
 
     onSubmit = () => {
+        this.setState({
+            signInDisabled: true,
+        })
         const payload = {
             email: this.state.email,
             password: this.state.password,
@@ -56,6 +60,7 @@ class SignIn extends Component {
                 }
                 this.setState({
                     signInStatus: SignInStatus.SIGN_IN_FAILED,
+                    signInDisabled: false,
                 })
             }
             )
@@ -63,6 +68,7 @@ class SignIn extends Component {
                 if (data.userData.rootGroupID === -1) {
                     this.setState({
                         signInStatus: SignInStatus.SIGN_IN_NO_PERMISSION,
+                        signInDisabled: false,
                     })
                     return;
                 }
@@ -80,13 +86,13 @@ class SignIn extends Component {
     }
 
     renderLoginFailed = () => {
-        if (this.state.signInStatus === SignInStatus.SIGN_IN_UNKNOWN ) {
+        if (this.state.signInStatus === SignInStatus.SIGN_IN_UNKNOWN) {
             return;
         }
 
         let errorMessage = "Sign In failed, try again"
         if (this.state.signInStatus === SignInStatus.SIGN_IN_NO_PERMISSION) {
-            errorMessage = "Sign In failed. You don't have access rights for this page"
+            errorMessage = "Sign In failed."
         }
         return (
             <div style={{ padding: "20px", textAlign: 'center' }}>
@@ -128,7 +134,16 @@ class SignIn extends Component {
                             />
                         </FormGroup>
                     </Col>
-                    <Button color="primary" block onClick={this.onSubmit}>Submit</Button>
+                    {
+                        this.state.signInDisabled === true && (
+                            <Button color="primary" disabled block onClick={this.onSubmit}>Submit</Button>
+                        )
+                    }
+                    {
+                        this.state.signInDisabled === false && (
+                            <Button color="primary" block onClick={this.onSubmit}>Submit</Button>
+                        )
+                    }
                 </Form>
                 {this.renderLoginFailed()}
             </Container>
