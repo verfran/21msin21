@@ -1,6 +1,7 @@
 import { React } from 'react';
 import { useQuery } from 'react-query';
 import Loader from '../Loader';
+import ScriptureStats from './ScriptureStats';
 
 const textStyle = {
     fontSize: 18,
@@ -54,7 +55,9 @@ const GroupStats = (props) => {
                         <div>
                             {
                                 data.groupStats.scriptureStats.map((ss, index) =>
-                                    <div key={index}> <li>{ss.memorizedCount} memorized {ss.name}</li></div>
+                                    <div key={index}>
+                                        <ScriptureStats memorizedCount={ss.memorizedCount} scripture={ss.name}/>
+                                    </div>
                                 )
                             }
                             <hr />
