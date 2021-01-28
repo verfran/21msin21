@@ -2,11 +2,12 @@ import { React } from 'react';
 import { useQuery } from 'react-query';
 import Loader from '../Loader';
 import ScriptureStats from './ScriptureStats';
+import { Row } from 'reactstrap';
+import MemberCard from './MemberCard';
 
 const textStyle = {
     fontSize: 18,
-    paddingBottom: 18,
-    paddingLeft: 20,
+    padding: 20,
     textAlign: 'left'
 }
 
@@ -44,22 +45,18 @@ const GroupStats = (props) => {
             {
                 status === 'success' && (
                     <div style={textStyle}>
+                        <MemberCard memberCount={data.groupStats.memberCount} />
+                        <br/>
                         <div>
-                            Members {data.groupStats.memberCount.count}
-                            <br />
-                        Women {data.groupStats.memberCount.womenCount}
-                            <br />
-                        Men {data.groupStats.memberCount.menCount}
-                            <hr />
-                        </div>
-                        <div>
-                            {
-                                data.groupStats.scriptureStats.map((ss, index) =>
-                                    <div key={index}>
-                                        <ScriptureStats memorizedCount={ss.memorizedCount} scripture={ss.name}/>
-                                    </div>
-                                )
-                            }
+                            <Row md={3} xs={1}>
+                                {
+                                    data.groupStats.scriptureStats.map((ss, index) =>
+                                        <div key={index}>
+                                            <ScriptureStats memorizedCount={ss.memorizedCount} scripture={ss.name} />
+                                        </div>
+                                    )
+                                }
+                            </Row>
                             <hr />
                         </div>
                         <div>
