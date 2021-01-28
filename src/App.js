@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import Correction from './Correction';
 import FileUpload from './FileUpload';
 import Stats from './Stats';
+import Members from './Members';
 
 //import { ReactQueryDevtools } from 'react-query/devtools'
 
@@ -18,6 +19,9 @@ function App() {
           <Router>
           <Route exact={true} path="/" render={() => (
               <Home />
+            )} />
+            <Route exact={true} path="/Members" render={() => (
+              <Members />
             )} />
             <Route exact={true} path="/Kannada" render={() => (
               <HomeKannada />
